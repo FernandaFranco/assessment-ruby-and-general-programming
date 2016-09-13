@@ -9,7 +9,7 @@ arr = [1,2,3,4,5,6,7,8,9, 10]
 # end
 
 # arr.map do |n|
-#   puts n
+#   n += 1
 # end
 
 arr << 12
@@ -24,3 +24,4 @@ new_arr = arr.select { |v| v.odd? }
 
 p arr
 p new_arr
+
