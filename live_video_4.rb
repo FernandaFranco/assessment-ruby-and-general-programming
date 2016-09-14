@@ -28,11 +28,14 @@
 
 # puts fizzbuzz(1,15)
 
+require 'pry'
+
 def search(query)
   PRODUCTS.select do |computer|
     computer[:name].downcase.split(" ").include?(query[:q]) && 
     computer[:price] >= query[:price_min] && 
     computer[:price] <= query[:price_max]
+    binding.pry
   end
 end
 
