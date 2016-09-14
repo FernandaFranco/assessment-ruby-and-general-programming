@@ -29,10 +29,21 @@
 # puts fizzbuzz(1,15)
 
 def search(query)
-  puts PRODUCTS.select do |computer|
-         computer[:name].downcase.split(" ").include?(query[:q]) && 
-         computer[:price] >= query[:price_min] && 
-         computer[:price] <= query[:price_max]
-       end
+  PRODUCTS.select do |computer|
+    computer[:name].downcase.split(" ").include?(query[:q]) && 
+    computer[:price] >= query[:price_min] && 
+    computer[:price] <= query[:price_max]
+  end
 end
 
+query2 = {
+  price_min: 300,
+  price_max: 450,
+  q: 'dell'
+}
+
+PRODUCTS = [
+  {name: "Dell Inspiron", price: 450}
+]
+
+puts search(query2)
