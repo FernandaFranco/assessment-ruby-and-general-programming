@@ -1,19 +1,20 @@
-def substring(string, start, finish = start)
-  substring = []
-  (start..finish).each do |index|
-    substring << string[index]
-  end
-  substring.join
-end
+# def substring(string, start, finish = start)
+#   substring = []
+#   (start..finish).each do |index|
+#     substring << string[index]
+#   end
+#   substring.join
+# end
 
 def substring(string, start, finish = start)
   string.chars.select.with_index { |char, index| (start..finish).include?(index) }.join
 end
 
-p substring("honey", 0, 2) == "hon"
-p substring("honey", 1, 2) == "on"
-p substring("honey", 3, 9) == "ey"
-p substring("honey", 2) == "n"
+
+# p substring("honey", 0, 2) == "hon"
+# p substring("honey", 1, 2) == "on"
+# p substring("honey", 3, 9) == "ey"
+# p substring("honey", 2) == "n"
 
 # def substrings(string)
 #   array = []
@@ -37,6 +38,24 @@ def substrings(string)
   array
 end
 
-p substrings("band")
-p substrings("world")
-p substrings("ppop")
+# p substrings("band")
+# p substrings("world")
+# p substrings("ppop")
+
+def palindromes(string)
+  substrings(string).select do |substring|
+    substring == substring.reverse
+  end
+end
+
+p palindromes("ppop")
+
+def largest_palindrome(string)
+  array = palindromes(string)
+  array.sort! do |prev, curr|
+    curr.length <=> prev.length
+  end
+  array[0]
+end
+
+p largest_palindrome("ppop")
