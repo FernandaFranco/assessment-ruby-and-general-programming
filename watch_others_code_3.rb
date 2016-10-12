@@ -38,6 +38,27 @@ TRANSLATION = {
 # end
 
 def computer(english)
+  TRANSLATION.each do |word, num|
+    english.gsub!(word, num.to_s)
+  end
+  english_array = english.split
+  english_array.delete("by")
+  while english_array.count >= 3
+    p expression = english_array[0..2]
+    result = case expression[1]
+             when "plus"
+               expression.first.to_i + expression.last.to_i
+             when "minus"
+               expression.first.to_i - expression.last.to_i
+             when "times"
+               expression.first.to_i * expression.last.to_i
+             when "divided"
+               expression.first.to_i / expression.last.to_i
+             end
+    english_array.shift(3)
+    english_array.unshift(result)
+  end
+  result
 end
 
 p computer("two plus two")
@@ -46,3 +67,11 @@ p computer("zero plus eight")
 
 p computer("two plus two minus three")
 p computer("three minus one plus five minus four plus six plus ten minus four")
+
+p computer("eight times four plus six divided by two minus two") 
+p computer("one plus four times two minus two") 
+p computer("nine divided by three times six")
+p computer("seven plus four divided by two")
+p computer("seven times four plus one divided by three minus two")
+p computer("one plus four times three divided by two minus two")
+p computer("nine divided by three times six")
