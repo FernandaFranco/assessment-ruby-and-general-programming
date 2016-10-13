@@ -48,8 +48,7 @@ def computer(english)
   result = 0
 
   pointer = 0
-  loop do
-    break if (pointer + 2) + 1 > english_array.size 
+  while (pointer + 2) + 1 <= english_array.size 
     expression = english_array[pointer..(pointer+2)]
     case expression[1]
     when "plus", "minus"
@@ -64,7 +63,7 @@ def computer(english)
     english_array = english.split
   end
 
-  while english_array.count >= 3
+  while english_array.size >= 3
     expression = english_array[0..2]
     result = case expression[1]
              when "plus"
